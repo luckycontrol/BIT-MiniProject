@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import MovieFavoritePresenter from "./MovieFavoritePresenter";
 import { movieApi } from "../../api";
 
@@ -25,23 +25,24 @@ export default () => {
     }
   }, []);
 
-  const removeFavorite = (e) => {
-    e.preventDefault();
-
-    const UpdateFavoriteMovieList = () => {
+  const UpdateFavoriteMovieList = useCallback(
+    (e) => {
       movieApi.UnregisterMovie(e.target.name);
 
       const newFavoriteMovies = favoriteMovies.filter(
         (movie) => movie._id !== e.target.name
       );
-
       setFavoriteMovies(newFavoriteMovies);
-      alert("선택하신 영화가 목록에서 삭제되었습니다.");
-    };
+    },
+    [favoriteMovies]
+  );
+
+  const removeFavorite = (e) => {
+    e.preventDefault();
 
     try {
       setLoading(true);
-      UpdateFavoriteMovieList();
+      UpdateFavoriteMovieList(e);
     } catch (error) {
       setError("선택하신 영화를 삭제하지 못했습니다.");
     } finally {
