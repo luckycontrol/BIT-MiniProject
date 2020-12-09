@@ -1,5 +1,14 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const introAnimation = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 
 const Container = styled.div`
   width: 100%;
@@ -11,6 +20,7 @@ const Container = styled.div`
 
 const Intro = styled.h1`
   font-size: 3rem;
+  animation: ${introAnimation} 1.5s ease-in-out;
 `;
 
 const HomePresenter = () => {

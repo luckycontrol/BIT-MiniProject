@@ -27,8 +27,6 @@ const MovieFavoritePresenter = ({ favoriteMovies, loading, error, action }) => {
                 <Poster
                   key={movie._id}
                   id={movie._id}
-                  actors={movie.actors}
-                  director={movie.director}
                   imUrl={movie.poster}
                   star={movie.star}
                   title={movie.title}

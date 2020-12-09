@@ -1,5 +1,14 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const gridAnimation = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 
 const Container = styled.div`
   margin-bottom: 50px;
@@ -17,6 +26,8 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, 210px);
   gap: 70px 30px;
+
+  animation: ${gridAnimation} 1.5s ease;
 `;
 
 const Section = ({ title, children }) => {

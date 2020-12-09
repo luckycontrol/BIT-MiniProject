@@ -73,16 +73,7 @@ const ImageContainer = styled.div`
   }
 `;
 
-const Poster = ({
-  id,
-  actors,
-  director,
-  imUrl,
-  star,
-  title,
-  action,
-  btn_text,
-}) => {
+const Poster = ({ id, imUrl, star, title, action, btn_text }) => {
   return (
     <>
       <ImageContainer>
